@@ -41,7 +41,11 @@ object spawnerDeObstaculos {
 		game.addVisual(obstaculo)
 		obstaculo.mover()
 	}
-
+	
+	method poolDeVehiculos(cantidad, posicion){
+		
+	}
+	
 	method positionDentroDeCalle() {
 		if (0.randomUpTo(10) > 5) {
 			return game.at(game.width() - 1, self.rangoDeAlto())
