@@ -1,6 +1,9 @@
+import froggi.*
 
-test "testX" {
 
-	assert.that(true)
+test "froggi cambia estado a grande" {
 
+	assert.equals(froggi.estado() , chiquito)
+	froggi.actualizarEstado()
+	assert.equals(froggi.estado() , grande)
 }

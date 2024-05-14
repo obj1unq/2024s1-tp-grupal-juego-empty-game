@@ -1,8 +1,24 @@
 import wollok.game.*
-import pepita.*
+import froggi.*
+import Frutas.*
+import insectos.*
+import obstaculos.*
 
 program juego {
+	game.width(11)
+	game.height(13)
+	game.boardGround("calles.png")
 	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.addVisualCharacter(froggi)
+	game.onCollideDo(froggi,{objeto => objeto.colision(froggi)})
+	
+	// ITEMS
+	game.onTick(5000, "CREAR FRUTA", {frutasManager.crearFruta()})
+	game.onTick(3000, "CREAR INSECTO", {insectoManager.crearInsecto()})
+
+	//OBSTACULOS EN LA CALLE
+	game.onTick(1000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto3", cantidadDeDanio = 1, velocidad = 200), game.at(0, 3)) })
+	game.onTick(2000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto2", cantidadDeDanio = 1, velocidad = 600), game.at(game.width() - 1, 2)) })
+	game.onTick(3000, "SPAWNER DE AUTOS", { spawnerDeObstaculos.inicializarObstaculoEnPosicion(new Obstaculo(nombreDeObstaculo = "auto1", cantidadDeDanio = 1, velocidad = 400), game.at(0, 1)) })
 	game.start()
 }
