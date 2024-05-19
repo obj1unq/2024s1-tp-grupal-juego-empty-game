@@ -1,8 +1,98 @@
+import alimentosFrutales.*
+import ambiente.*
+import config.*
+import posicionamiento.*
+import objects.*
 import wollok.game.*
-import pepita.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	
+	//const james = new James(position=game.at(9,5), direccion=arriba)
+	const jessie = new Jessie(position=game.at(3,5), direccion=derecha)
+	
+	const puerta1 = new Puerta(position=game.at(2,8))
+	const puerta2 = new Puerta(position=game.at(9,4))
+	const puerta3 = new Puerta(position=game.at(16,6))
+	const puerta4 = new Puerta(position=game.at(11,4))
+	const puerta5 = new Puerta(position=game.at(5,1))
+	const puerta6 = new Puerta(position=game.at(4,7))
+	
+	const cofre1 = new Cofre(position=game.at(3,10), contenido = llave)
+	const cofre2 = new Cofre(position=game.at(16,3))
+	const cofre3 = new Cofre(position=game.at(9,10))
+	const cofre4 = new Cofre(position=game.at(13,11))
+	const cofresEscenario = [cofre1,cofre2,cofre3,cofre4]
+	cofresEscenario.forEach({cofre => game.addVisual(cofre)})
+	
+	const pinche1 = new Pinche(position=game.at(8,3))
+	const pinche2 = new Pinche(position=game.at(16,9))
+	const pinche3 = new Pinche(position=game.at(3,9))
+	
+	const baniera = new Baniera(position = game.at(7, 10))
+	const cama = new Cama(position = game.at(13, 1))
+	const inodoro = new Inodoro(position = game.at(9, 8))
+	const lavamanos = new Lavamanos(position = game.at(5, 9))
+	const mesa = new Mesa(position = game.at(6, 3))
+	const ropero = new Ropero(position = game.at(14, 3))
+	const silla = new Silla(position = game.at(7, 3))
+	const sillon = new Sillon(position = game.at(11, 9))
+	const sofa = new Sofa(position = game.at(13, 10))
+	
+	game.title("DETECTIVE PIKACHU, AL RESCATE")
+	
+	game.boardGround("fondo-nivel1.png")
+	
+	config.dimensiones()
+	nivelManager.generarNivel()
+	//mapaDeParedesDelNivel1.agregar()
+	
+	game.addVisual(pikachu)
+	
+	game.addVisual(pokebola)
+	
+	game.addVisual(baniera)
+	game.addVisual(cama)
+	game.addVisual(inodoro)
+	game.addVisual(lavamanos)
+	game.addVisual(mesa)
+	game.addVisual(ropero)
+	game.addVisual(silla)
+	game.addVisual(sillon)
+	game.addVisual(sofa)
+	
+
+	
+	game.addVisual(puerta1)
+	game.addVisual(puerta2)
+	game.addVisual(puerta3)
+	game.addVisual(puerta4)
+	game.addVisual(puerta5)
+	game.addVisual(puerta6)
+	
+	game.addVisual(pinche1)
+	game.addVisual(pinche2)
+	game.addVisual(pinche3)
+	////////ANOTADOR<-----
+	anotador.generarVisuales()
+	/*game.addVisual(iconPikachu)
+	game.addVisual(iconCorazonPikachu)*/
+	
+	//game.addVisual(james)
+	game.addVisual(jessie)
+	
+	//game.onTick(500, "CUSTODIA 1", {james.caminar()} )
+	game.onTick(400, "CUSTODIA 2", {jessie.caminar()} )
+	
+	newEvee.crear()
+//	newCharmander.crear()
+//	newPidgeot.crear()
+//	newSquirtle.crear()
+//	newVulpix.crear()
+//	
+
+	config.teclas()
+	config.colisiones()
+	config.frutas()
+	
 	game.start()
 }
