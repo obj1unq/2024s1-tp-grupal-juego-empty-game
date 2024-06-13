@@ -1,0 +1,7 @@
+import wollok.game.*
+import extras.*
+
+program Game {
+	initialMenu.start()
+	game.start()
+}
