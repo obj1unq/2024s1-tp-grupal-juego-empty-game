@@ -1,8 +1,31 @@
+import alimentosFrutales.*
+import ambiente.*
+import config.*
+import enemigos.*
+import pokemons.*
+import posicionamiento.*
+import transiciones.*
 import wollok.game.*
-import pepita.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("DETECTIVE PIKACHU, AL RESCATE")
+	config.ambienteBasico()
+	gameManager.iniciar()
 	game.start()
 }
+
+/* FALTA:
+ 
+Tareas:
+
+- Agregarle sonido a las colisiones de Pikachu en general (ya esta hecho en un 90% despues lo
+* subo terminado en estos dias - Jonathan)
+
+- Hacer tests sobre:
+    • Colisiones que falten.
+    • El pase de Nivel y su reset (pikachu, chequeado).
+    • Sonidos (no sé si se puede)
+    • Chequeo de imágenes correctas en las transiciones.
+    • Más tests que aparezcan...
+  		 
+ */
