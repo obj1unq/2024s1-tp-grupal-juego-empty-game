@@ -1,8 +1,16 @@
+import alimentos.*
+import ambiente.*
+import config.*
+import enemigos.*
+import menu.*
+import pokemons.*
+import posicionamiento.*
+import transiciones.*
 import wollok.game.*
-import pepita.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("DETECTIVE PIKACHU, AL RESCATE")
+	config.ambienteBasico()
+	gameManager.iniciar()
 	game.start()
 }
