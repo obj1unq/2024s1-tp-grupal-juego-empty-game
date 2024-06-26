@@ -1,6 +1,78 @@
+import froggi.*
+import obstaculos.*
+import config.*
+import ui.*
+import consumibles.*
+import MetaParaVictoria.*
+import wollok.game.*
 
-test "testX" {
 
-	assert.that(true)
 
+
+describe "personaje"{
+    //PERSONAJE
+    const froggi = new Froggi(vida = 4)
+    const tronco = new Tronco(velocidad = 800 , position = game.at(7 , 7))
+	const auto1 = new Auto(velocidad = 300 , position = game.at(2,2) , autos = ["auto1.png" , "auto3.png"].anyOne())
+	const moto = new Moto (velocidad = 300,  position= game.at(3,3))
+	const camion = new Camion (velocidad = 900,  position= game.at(1,1) , camiones = ["camion-verde.png" , "camion-rojo.png"].anyOne())
+	const banana = new Banana()
+	const uva = new Uva()
+	const manzana = new Manzana()
+	
+	
+	
+   test "COLISIONA CON TRONCO" {
+   	game.addVisual(froggi)
+   	froggi.position(game.at(7,7))
+   	game.addVisual(tronco)
+   	froggi.estoySobreElAgua()
+	assert.equals(4 , froggi.vida())
+   }
+   test "COLISIONA CON EL AGUA" {
+   	game.addVisual(froggi)
+   	froggi.position(game.at(8,8))
+   	froggi.estoySobreElAgua()
+   	game.addVisual(tronco)
+	assert.equals(3 , froggi.vida())
+   }
+   test "COLISIONA CON MOTO" {
+	froggi.position(game.at(3,3))
+	moto.colision(froggi)
+	assert.equals(3 , froggi.vida())
+   }
+   test "COLISIONA CON AUTO" {
+   	game.addVisual(froggi)
+   	auto1.colision(froggi)
+	assert.equals(2 , froggi.vida())
+   }
+   test "COLISIONA CON CAMION Y LO EMPUJA UNA CELDA HACIA ABAJO" {
+	game.addVisual(froggi)
+	froggi.position(game.at(2,2))
+	camion.colision(froggi)
+	assert.equals(game.at(2 , 1), froggi.position())
+	assert.equals(1 , froggi.vida())
+   }
+   
+   test "Agregado de puntos con UVA"{
+   	game.addVisual(froggi)
+   	game.addVisual(uva)
+   	assert.equals(0 , froggi.puntos())
+   	uva.colision(froggi)
+   	assert.equals(200 , froggi.puntos())
+   }
+   test "Agregado de puntos con MANZANA"{
+	game.addVisual(froggi)
+	game.addVisual(manzana)
+	assert.equals(0 , froggi.puntos())
+	manzana.colision(froggi)
+	assert.equals(100 , froggi.puntos())   	
+   }   
+   test "Agregado de puntos con BANANA"{
+   	game.addVisual(froggi)
+   	game.addVisual(banana)
+   	assert.equals(0 , froggi.puntos())
+   	banana.colision(froggi)
+   	assert.equals(300 , froggi.puntos())
+   }   
 }

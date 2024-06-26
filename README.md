@@ -1,10 +1,12 @@
-# Nombre del juego (<- borrar y completar)
+# Ranita2024
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Allegroni, Nicolas
+- Brito, Hernan
+- Lovardo Ludwig, Maximiliano
+- Pezoa, Leonardo
+
 
 ## Capturas
 

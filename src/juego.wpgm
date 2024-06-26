@@ -1,8 +1,19 @@
 import wollok.game.*
-import pepita.*
+import froggi.*
+import obstaculos.*
+import consumibles.*
+import ui.*
+import config.*
+import MetaParaVictoria.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	
+	game.width(20)
+	game.height(13)
+	game.title("Froggy (Wollok Edition)")
+	configuracionPantallas.cargarPantalla(pantallaInicio)
+	configuracionPantallas.configurarInicio()
 	game.start()
+	// ERROR MOSCA DESPUES DE REINICIAR
 }
+
