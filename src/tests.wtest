@@ -1,6 +1,70 @@
+import nave.*
+import balas.*
+import barrera.*
+import aliens.*
+import wollok.game.*
+import juego.*
+import mock.*
 
-test "testX" {
 
-	assert.that(true)
+ describe "juego"{
+ 	const balaAlien = new BalaAlien()
+ 	const balaNave = new BalaNave()
+ 	const barreraGris = new BarreraGris()
+ 	const barreraMarron = new BarreraMarron()
+ 	const alienVerde = new AlienVerde(position = game.at(8,8)) 
+ 	const alienRojo = new AlienRojo(position = game.at(8,9))
+ 	const alienAmarillo = new AlienAmarillo(position = game.at(8,7))
+ 	const corazon = new Corazon()
+ 	
+ 	method initialize() {
+ 		soundProducer.provider(soundProviderMock)
+ 		game.clear()
+ 	}
 
+	test "bala de alien colisiona contra la nave y saca salud " {
+		flota.agregarAlien(alienVerde)
+		flota.agregarAlien(alienRojo)
+		flota.agregarAlien(alienAmarillo)
+		nave.addCorazon(corazon)
+		nave.addCorazon(corazon)
+		nave.addCorazon(corazon)
+		nave.salud(3)
+		assert.equals(3,nave.salud())
+		nave.reaccionColision(balaAlien)	
+		assert.equals(2,nave.salud())
+		nave.reaccionColision(balaAlien)
+		assert.equals(1,nave.salud())
+			
+	}
+		
+	test "bala de alien puede matar a nave "{
+		assert.that(balaAlien.puedoMatarlo(nave))
+	}
+	test "bala de nave puede matar a barrera gris "{
+		flotaDeBarreras.agregarBarrera(barreraGris)
+		
+		assert.that(balaNave.puedoMatarlo(barreraGris))
+	}
+	test "bala de nave puede matar a barrera marron "{
+		flotaDeBarreras.agregarBarrera(barreraMarron)
+		
+		assert.that(balaNave.puedoMatarlo(barreraMarron))
+	}
+	test "bala de nave puede matar a alien verde"{
+		flota.agregarAlien(alienVerde)
+		assert.that(balaNave.puedoMatarlo(alienVerde))
+		
+	}
+	test "bala de nave puede matar a alien rojo"{
+		flota.agregarAlien(alienRojo)
+		assert.that(balaNave.puedoMatarlo(alienRojo))
+		
+	}
+	test "bala de nave puede matar a alien amarillo"{
+		flota.agregarAlien(alienAmarillo)
+		assert.that(balaNave.puedoMatarlo(alienAmarillo))
+		
+	}
+	
 }

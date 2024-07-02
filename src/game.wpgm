@@ -1,0 +1,21 @@
+import wollok.game.*
+import nave.*
+import aliens.*
+import posiciones.*
+import inicio.*
+import balas.*
+import juego.*
+import mapa.*
+import barrera.*
+
+
+program game {
+	// CONFIG
+	game.title("Space Invaders")
+	game.boardGround("fondo.jpg")
+	game.width(24)
+	game.height(16)
+	pantallaInicio.cargar()
+	game.start()
+}
+
